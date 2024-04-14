@@ -3,14 +3,13 @@ from transformers import BertModel, BertTokenizerFast
 
 
 MAX_LEN = 100
-
+MODEL_NAME = "hfl/chinese-roberta-wwm-ext"
 
 if __name__ == '__main__':
     sentence = input("Please input a sentence: ")
-    model_name = "hfl/chinese-roberta-wwm-ext"
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = BertModel.from_pretrained(model_name).to(device)
-    tokenizer = BertTokenizerFast.from_pretrained(model_name)
+    model = BertModel.from_pretrained(MODEL_NAME).to(device)
+    tokenizer = BertTokenizerFast.from_pretrained(MODEL_NAME)
 
     inputs = tokenizer(
         sentence,
